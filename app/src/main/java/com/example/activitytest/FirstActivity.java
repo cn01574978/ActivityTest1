@@ -20,7 +20,7 @@ public class FirstActivity extends BaseActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        String tempData = "保存的数据去";
+        String tempData = "保存的数据去我";
         outState.putString("data_key",tempData);
     }
 
