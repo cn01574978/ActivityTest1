@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.activitytest">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ThirdActivity">
+            <intent-filter>
+                 <action android:name="android.intent.action.VIEW" />
+                 <category android:name="android.intent.category.DEFAULT" />
+                 <data android:scheme="http" >
+                                <!--//data 标签中 scheme 指定数据协议-->
+                                <!--//host 指定主机 如：www.baidu.com-->
+                                <!--//port 指定端口-->
+                                <!--//path 指定主机和端口之后的部分-->
+                                <!--//mimeType 指定可以处理的数据类型，可使用通配符方式。-->
+                                <!--// 必须是  Intent(Intent.ACTION_VIEW) 可以调用;         // Intent.ACTION_VIEW android 系统的内置动作-->
+                </data>
+            </intent-filter>
+        </activity>
+        <activity android:name=".SecondActtivity">
+
+            <!-- //新建活动后这里会自动注册，并且不是主活动 -->
+            <intent-filter>
+                <action android:name="com.example.activitytest.ACTION_START" />
+                <!-- // 这里是配置隐式 intent 的 指定活动字符串 -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- // 需要和上面同时匹配才能调用 -->
+                <!-- // 这里的 DEFAULT 为默认的，调用时可以不指定 -->
+                <!-- // startActivity 运行时 会自动加入 category -->
+                <!--<category android:name="com.example.activitytest.MY_CATEGORY" />-->
+                <!-- // 可以指定多个 category （种类），如果没有上面的 -->
+                <!-- // 的默认 category ，则调用此活动时，必须指定这个 -->
+                <!-- <action android:name="android.intent.action.VIEW" /> -->
+                <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+                <!-- <data android:scheme="http" /> -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FirstActivity"
+            android:launchMode="standard"
+            android:label="这是第一个活动">
+            <!--活动启动的四种模式 ： standard          默认模式 可省略 每次启动都在栈中创建一个对象 -->
+            <!--                      singleTop         当此活动在栈顶时，会直接使用，不会另外创建对象，-->
+            <!--                                        但是 如果只是在栈内而不在栈顶的话，调用时还是会创建对象-->
+            <!--                      singleTask        对栈进行检索,找到此活动后调用,但是,会把在此活动之上的其他活动全部出栈-->
+            <!--                      singleInstance    重新分配栈空间,来处理此活动,-->
+            <!--                                        当一个活动调用这个活动时,就会有两个栈来装这两个活动-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <!-- //这里是配置主活动的 即首次打开程序显示的窗口 -->
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- //这里是配置主活动的 即首次打开程序显示的窗口 -->
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
